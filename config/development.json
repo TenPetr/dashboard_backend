@@ -1,0 +1,4 @@
+{
+  "db": "mongodb://localhost/dashboard_dev",
+  "jwtPrivateKey": "dev"
+}
