@@ -4,6 +4,7 @@ module.exports = function(app) {
   const corsOptions = {
     allowedHeaders: [
       "Origin",
+      "No-Auth",
       "X-Requested-With",
       "Content-Type",
       "Accept",

@@ -2,6 +2,7 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+var randToken = require("rand-token");
 
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, maxlength: 255 },
@@ -12,14 +13,20 @@ const userSchema = new mongoose.Schema({
     minlength: 1,
     maxlength: 255
   },
-  password: { type: String, required: true, minlength: 8, maxlength: 1024 }
+  password: { type: String, required: true, minlength: 8, maxlength: 1024 },
+  refreshToken: { type: String }
 });
 
 userSchema.methods.generateToken = function() {
   return jwt.sign(
     { _id: this._id, username: this.username },
-    config.get("jwtPrivateKey")
+    config.get("jwtPrivateKey"),
+    { expiresIn: 5 }
   );
+};
+
+userSchema.methods.generateRefreshToken = function() {
+  return randToken.uid(128);
 };
 
 const User = mongoose.model("User", userSchema);

@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 
-const { User, validate } = require("../models/register");
+const { User, validate } = require("../models/user");
 
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
@@ -16,11 +16,20 @@ router.post("/", async (req, res) => {
   if (user) return res.status(400).send("Username is already taken.");
 
   user = new User(_.pick(req.body, ["username", "email", "password"]));
+
+  const refreshToken = user.generateRefreshToken();
+  user.refreshToken = refreshToken;
   user.password = await bcrypt.hash(user.password, 10);
+
   await user.save();
 
   const token = user.generateToken();
-  res.send({ token: token, username: user.username });
+
+  res.send({
+    token: token,
+    refreshToken: refreshToken,
+    username: user.username
+  });
 });
 
 module.exports = router;
