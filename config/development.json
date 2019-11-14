@@ -1,5 +1,4 @@
 {
   "db": "mongodb://localhost/dashboard_dev",
-  "jwtPrivateKey": "dev",
-  "jwtRefreshKey": "dev2"
+  "jwtPrivateKey": "dev"
 }

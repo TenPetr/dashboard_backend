@@ -16,19 +16,18 @@ router.post("/", async (req, res) => {
   if (user) return res.status(400).send("Username is already taken.");
 
   user = new User(_.pick(req.body, ["username", "email", "password"]));
+  user.password = await bcrypt.hash(user.password, 10);
 
   const refreshToken = user.generateRefreshToken();
   user.refreshToken = refreshToken;
-  user.password = await bcrypt.hash(user.password, 10);
-
-  await user.save();
 
   const token = user.generateToken();
+  await user.save();
 
   res.send({
     token: token,
-    refreshToken: refreshToken,
-    username: user.username
+    username: user.username,
+    refreshToken: refreshToken
   });
 });
 
