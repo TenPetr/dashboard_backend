@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
+const config = require("config");
 
 const { User, validate } = require("../models/user");
 
@@ -20,15 +21,12 @@ router.post("/", async (req, res) => {
 
   const refreshToken = user.generateRefreshToken();
   user.refreshToken = refreshToken;
-
-  const token = user.generateToken();
   await user.save();
 
-  res.send({
-    token: token,
-    username: user.username,
-    refreshToken: refreshToken
-  });
+  req.session.jwt = user.generateToken();
+  res.cookie("refreshToken", refreshToken, config.get("cookieConfig"));
+
+  res.send({ username: user.username });
 });
 
 module.exports = router;

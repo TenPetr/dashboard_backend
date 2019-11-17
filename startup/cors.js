@@ -1,18 +1,18 @@
 const cors = require("cors");
+const config = require("config");
 
 module.exports = function(app) {
   const corsOptions = {
     allowedHeaders: [
       "Origin",
-      "No-Auth",
       "X-Requested-With",
       "Content-Type",
       "Accept",
       "x-auth-token"
     ],
-    credentials: true,
+    credentials: true, // allows cookies
     methods: "GET, HEAD, OPTIONS, PUT, PATCH, POST, DELETE",
-    origin: "*",
+    origin: config.get("origin"), // cannot put * wildcard when using cookies (credentials)
     preflightContinue: false,
     optionsSuccessStatus: 200
   };

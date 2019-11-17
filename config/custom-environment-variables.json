@@ -1,3 +1,6 @@
 {
-  "db": "db"
+  "db": "db",
+  "jwtPrivateKey": "jwtPrivateKey",
+  "cookie": "cookie",
+  "origin": "origin"
 }

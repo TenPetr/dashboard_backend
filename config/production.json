@@ -1,0 +1,7 @@
+{
+  "cookieConfig": {
+    "httpOnly": true,
+    "secure": true,
+    "signed": true
+  }
+}

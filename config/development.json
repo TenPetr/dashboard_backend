@@ -1,4 +1,16 @@
 {
   "db": "mongodb://localhost/dashboard_dev",
-  "jwtPrivateKey": "dev"
+  "jwtPrivateKey": "dev",
+  "cookie": "dev",
+  "cookieConfig": {
+    "httpOnly": true,
+    "secure": false,
+    "signed": true
+  },
+  "origin": "http://localhost:8100",
+  "sessionConfig": {
+    "secret": "dev",
+    "resave": false,
+    "saveUninitialized": true
+  }
 }
