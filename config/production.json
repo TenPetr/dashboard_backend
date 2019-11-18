@@ -3,5 +3,10 @@
     "httpOnly": true,
     "secure": true,
     "signed": true
+  },
+  "sessionConfig": {
+    "secret": "dev",
+    "resave": false,
+    "saveUninitialized": false
   }
 }

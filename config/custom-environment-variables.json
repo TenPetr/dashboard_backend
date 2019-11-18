@@ -2,5 +2,8 @@
   "db": "db",
   "jwtPrivateKey": "jwtPrivateKey",
   "cookie": "cookie",
-  "origin": "origin"
+  "origin": "origin",
+  "sessionConfig": {
+    "secret": "sessionSecret"
+  }
 }

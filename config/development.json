@@ -11,6 +11,6 @@
   "sessionConfig": {
     "secret": "dev",
     "resave": false,
-    "saveUninitialized": true
+    "saveUninitialized": false
   }
 }

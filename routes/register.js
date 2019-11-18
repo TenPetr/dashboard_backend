@@ -24,6 +24,7 @@ router.post("/", async (req, res) => {
   await user.save();
 
   req.session.jwt = user.generateToken();
+
   res.cookie("refreshToken", refreshToken, config.get("cookieConfig"));
 
   res.send({ username: user.username });

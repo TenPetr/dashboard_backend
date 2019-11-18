@@ -8,7 +8,7 @@ module.exports = function(app) {
       "X-Requested-With",
       "Content-Type",
       "Accept",
-      "x-auth-token"
+      "No-Auth"
     ],
     credentials: true, // allows cookies
     methods: "GET, HEAD, OPTIONS, PUT, PATCH, POST, DELETE",

@@ -22,7 +22,7 @@ userSchema.methods.generateToken = function() {
   return jwt.sign(
     { _id: this._id, username: this.username },
     config.get("jwtPrivateKey"),
-    { expiresIn: 20 }
+    { expiresIn: 5 }
   );
 };
 

@@ -22,29 +22,33 @@ router.post("/", async (req, res) => {
   await user.save();
 
   req.session.jwt = user.generateToken();
+  req.session.username = user.username;
+
+  console.log(req.session);
   res.cookie("refreshToken", refreshToken, config.get("cookieConfig"));
 
-  console.log(req.session.jwt);
   res.send({ username: user.username });
 });
 
-// router.post("/token", async (req, res) => {
-//   let user = await User.findOne({ username: req.body.username });
-//   if (!user) return res.status(400).send("User does not exist.");
+router.get("/token", async (req, res) => {
+  console.log(req.session);
+  let user = await User.findOne({ username: req.session.username });
+  if (!user) return res.status(400).send("User does not exist.");
 
-//   if (req.body.refreshToken == user.refreshToken) {
-//     // Generuje nový RF-T, který uloží do DB a pošle klientovi
-//     const newRefreshToken = user.generateRefreshToken();
+  if (req.signedCookies.refreshToken == user.refreshToken) {
+    const refreshToken = user.generateRefreshToken();
 
-//     user.refreshToken = newRefreshToken;
-//     await user.save();
+    user.refreshToken = refreshToken;
+    await user.save();
 
-//     res.cookie("token", token, config.get("cookieConfig"));
-//     res.cookie("refreshToken", refreshToken, config.get("refreshToken"));
-//   } else {
-//     return res.status(401).send("Unauthorized.");
-//   }
-// });
+    req.session.jwt = user.generateToken();
+    res.cookie("refreshToken", refreshToken, config.get("cookieConfig"));
+
+    res.status(200).send(true);
+  } else {
+    return res.status(401).send(false);
+  }
+});
 
 router.post("/logout", async (req, res) => {
   let user = await User.findOne({ username: req.body.username });
