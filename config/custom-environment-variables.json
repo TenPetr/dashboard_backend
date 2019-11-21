@@ -1,7 +1,7 @@
 {
   "db": "db",
   "jwtPrivateKey": "jwtPrivateKey",
-  "cookie": "cookie",
+  "cookieSecret": "cookieSecret",
   "origin": "origin",
   "sessionConfig": {
     "secret": "sessionSecret"

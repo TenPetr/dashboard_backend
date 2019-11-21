@@ -17,16 +17,14 @@ const userSchema = new mongoose.Schema({
   refreshToken: { type: String }
 });
 
-// Generuje JWT, do payloadu se přidává random string
 userSchema.methods.generateToken = function() {
   return jwt.sign(
-    { _id: this._id, username: this.username },
+    { _id: this._id, username: this.username, rn: randToken.uid(8) },
     config.get("jwtPrivateKey"),
     { expiresIn: 5 }
   );
 };
 
-// Generuje random token (RF-T)
 userSchema.methods.generateRefreshToken = function() {
   return randToken.uid(64);
 };

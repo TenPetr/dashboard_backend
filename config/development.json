@@ -1,11 +1,12 @@
 {
   "db": "mongodb://localhost/dashboard_dev",
   "jwtPrivateKey": "dev",
-  "cookie": "dev",
-  "cookieConfig": {
+  "cookieSecret": "dev",
+  "CookieCongifRft": {
     "httpOnly": true,
     "secure": false,
-    "signed": true
+    "signed": true,
+    "path": "/token"
   },
   "origin": "http://localhost:8100",
   "sessionConfig": {

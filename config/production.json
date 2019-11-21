@@ -1,11 +1,11 @@
 {
-  "cookieConfig": {
+  "CookieCongifRft": {
     "httpOnly": true,
     "secure": true,
-    "signed": true
+    "signed": true,
+    "path": "/token"
   },
   "sessionConfig": {
-    "secret": "dev",
     "resave": false,
     "saveUninitialized": false
   }
