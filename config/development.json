@@ -13,5 +13,6 @@
     "secret": "dev",
     "resave": false,
     "saveUninitialized": false
-  }
+  },
+  "weatherAPIKey": "fe018b2b101aa61a51bb9fbbb209cfaa"
 }
