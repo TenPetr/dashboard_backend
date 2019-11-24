@@ -3,6 +3,7 @@ const auth = require("../routes/auth");
 const me = require("../routes/me");
 const token = require("../routes/token");
 const weather = require("../routes/weather");
+const calendar = require("../routes/calendar");
 const error = require("../middlewares/error");
 
 module.exports = function(app) {
@@ -11,5 +12,6 @@ module.exports = function(app) {
   app.use("/token", token);
   app.use("/me", me);
   app.use("/weather", weather);
+  app.use("/calendar", calendar);
   app.use(error);
 };
