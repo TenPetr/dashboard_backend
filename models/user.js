@@ -21,7 +21,7 @@ userSchema.methods.generateToken = function() {
   return jwt.sign(
     { _id: this._id, username: this.username, rn: randToken.uid(8) },
     config.get("jwtPrivateKey"),
-    { expiresIn: 5 }
+    { expiresIn: 30 }
   );
 };
 
@@ -51,5 +51,15 @@ function validate(user) {
   return Joi.validate(user, schema);
 }
 
+function validatePassword(newPassword) {
+  const schema = Joi.string()
+    .required()
+    .min(8)
+    .max(255);
+
+  return Joi.validate(newPassword, schema);
+}
+
 exports.User = User;
 exports.validate = validate;
+exports.validatePassword = validatePassword;
