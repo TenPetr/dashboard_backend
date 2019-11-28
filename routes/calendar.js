@@ -10,11 +10,9 @@ router.get("/", auth, async (req, res) => {
     const response = await fetch(url);
     const data = await response.json();
 
-    res.status(200).send(data);
-  } catch (error) {
-    res
-      .status(200)
-      .send({ status: 404, message: "External API error.", error });
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

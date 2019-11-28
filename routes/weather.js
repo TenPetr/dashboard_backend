@@ -12,8 +12,7 @@ router.get("/", auth, async (req, res) => {
   const result = await fetch(url + params + apiKey);
   const data = await result.json();
 
-  if (data.cod != "200")
-    return res.status(200).send({ status: 404, message: "City not found." });
+  if (data.cod != "200") return res.status(400).json("City not found.");
 
   const weather = {
     city: data.name,
@@ -35,7 +34,7 @@ router.get("/", auth, async (req, res) => {
   //   icon: "01d"
   // };
 
-  res.status(200).send(weather);
+  res.status(200).json(weather);
 });
 
 module.exports = router;
