@@ -7,6 +7,6 @@
   },
   "sessionConfig": {
     "resave": false,
-    "saveUninitialized": true
+    "saveUninitialized": false
   }
 }
