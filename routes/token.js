@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
     user.refreshToken = refreshToken;
     await user.save();
-
+    console.log("/token", req.session);
     req.session.jwt = user.generateToken();
     res.cookie("refreshToken", refreshToken, config.get("CookieCongifRft"));
 

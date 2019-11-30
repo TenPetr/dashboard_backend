@@ -11,7 +11,7 @@ router.get("/", auth, async (req, res) => {
 
   const result = await fetch(url + params + apiKey);
   const data = await result.json();
-
+  console.log(req.session);
   if (data.cod != "200") return res.status(400).json("City not found.");
 
   const weather = {
