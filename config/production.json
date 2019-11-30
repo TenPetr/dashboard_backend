@@ -1,12 +1,12 @@
 {
   "CookieCongifRft": {
     "httpOnly": true,
-    "secure": false,
+    "secure": true,
     "signed": true,
     "path": "/token"
   },
   "sessionConfig": {
     "resave": false,
-    "saveUninitialized": false
+    "saveUninitialized": true
   }
 }
