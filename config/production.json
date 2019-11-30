@@ -3,8 +3,7 @@
     "httpOnly": true,
     "secure": true,
     "signed": true,
-    "path": "/token",
-    "sameSite": "lax"
+    "path": "/token"
   },
   "sessionConfig": {
     "resave": false,
