@@ -5,7 +5,6 @@ const config = require("config");
 const { User } = require("../models/user");
 
 router.get("/", async (req, res) => {
-  console.log("/token", req.session);
   let user = await User.findOne({ username: req.session.username });
   if (!user) return res.status(400).send("Error, cannot find username.");
 

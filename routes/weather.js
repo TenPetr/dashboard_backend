@@ -5,7 +5,6 @@ const fetch = require("node-fetch");
 const auth = require("../middlewares/auth");
 
 router.get("/", auth, async (req, res) => {
-  console.log(res.cookies);
   const url = `https://api.openweathermap.org/data/2.5/weather`;
   const params = `?lat=${req.query.lat}&lon=${req.query.lon}&units=metric`;
   const apiKey = `&appid=${config.get("weatherAPIKey")}`;
