@@ -6,6 +6,7 @@ const weather = require("../routes/weather");
 const calendar = require("../routes/calendar");
 const error = require("../middlewares/error");
 const change = require("../routes/change");
+const news = require("../routes/news");
 
 module.exports = function(app) {
   app.use("/register", register);
@@ -15,5 +16,6 @@ module.exports = function(app) {
   app.use("/weather", weather);
   app.use("/calendar", calendar);
   app.use("/change", change);
+  app.use("/news", news);
   app.use(error);
 };

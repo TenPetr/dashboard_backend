@@ -6,5 +6,6 @@
   "sessionConfig": {
     "secret": "sessionSecret"
   },
-  "weatherAPIKey": "weatherAPIKey"
+  "weatherAPIKey": "weatherAPIKey",
+  "newsAPIKey": "newsAPIKey"
 }
