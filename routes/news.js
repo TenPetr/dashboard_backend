@@ -4,7 +4,7 @@ const config = require("config");
 const fetch = require("node-fetch");
 const auth = require("../middlewares/auth");
 
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   const url = `https://newsapi.org/v2/top-headlines?`;
   const params = `country=cz&pageSize=10&`;
   const apiKey = `apiKey=${config.get("newsAPIKey")}`;
