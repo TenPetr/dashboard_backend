@@ -4,7 +4,7 @@
     "secure": true,
     "signed": true,
     "path": "/token",
-    "sameSite": true
+    "sameSite": "lax"
   },
   "sessionConfig": {
     "resave": false,
