@@ -3,12 +3,10 @@
     "httpOnly": true,
     "secure": true,
     "signed": true,
-    "path": "/token",
-    "SameSite": "None"
+    "path": "/token"
   },
   "sessionConfig": {
     "resave": false,
-    "saveUninitialized": false,
-    "cookie": { "secure": true, "SameSite": "None" }
+    "saveUninitialized": false
   }
 }

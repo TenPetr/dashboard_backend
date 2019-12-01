@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
   req.session.username = user.username;
 
   res.cookie("refreshToken", refreshToken, config.get("CookieCongifRft"));
-
+  res.cookie("test", "test", { secure: true, SameSite: "None" });
   res.send({ username: user.username });
 });
 
