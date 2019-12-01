@@ -8,6 +8,6 @@
   "sessionConfig": {
     "resave": false,
     "saveUninitialized": false,
-    "cookie": { "secure": true, "domain": "https://dshboard.herokuapp.com" }
+    "cookie": { "secure": true }
   }
 }
