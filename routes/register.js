@@ -23,10 +23,8 @@ router.post("/", async (req, res) => {
   user.refreshToken = refreshToken;
   await user.save();
 
-  req.session.jwt = user.generateToken();
-  req.session.username = user.username;
-
-  res.cookie("refreshToken", refreshToken, config.get("CookieCongifRft"));
+  res.cookie("jwt", user.generateToken(), config.get("CookieConfig"));
+  res.cookie("rft", user.generateRefreshToken(), config.get("CookieCongifRft"));
 
   res.send({ username: user.username });
 });

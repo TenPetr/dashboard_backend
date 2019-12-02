@@ -8,6 +8,11 @@
     "signed": true,
     "path": "/token"
   },
+  "CookieConfig": {
+    "httpOnly": true,
+    "secure": false,
+    "signed": true
+  },
   "origin": "http://localhost:8100",
   "sessionConfig": {
     "secret": "dev",
