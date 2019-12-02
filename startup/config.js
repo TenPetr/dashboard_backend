@@ -11,12 +11,4 @@ module.exports = function(app) {
   app.use(cookieParser(config.get("cookieSecret")));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-
-  if (!config.get("jwtPrivateKey")) {
-    throw new Error("FATAL ERROR: jwtPrivateKey is not defined");
-  }
-
-  if (!config.get("cookieSecret")) {
-    throw new Error("FATAL ERROR: cookieSecret is not defined");
-  }
 };
