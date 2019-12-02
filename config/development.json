@@ -6,12 +6,16 @@
     "httpOnly": true,
     "secure": false,
     "signed": true,
-    "path": "/token"
+    "path": "/token",
+    "SameSite": "None",
+    "domain": "https://dshboard.herokuapp.com"
   },
   "CookieConfig": {
     "httpOnly": true,
     "secure": false,
-    "signed": true
+    "signed": true,
+    "SameSite": "None",
+    "domain": "https://dshboard.herokuapp.com"
   },
   "origin": "http://localhost:8100",
   "sessionConfig": {

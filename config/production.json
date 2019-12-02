@@ -3,12 +3,16 @@
     "httpOnly": true,
     "secure": true,
     "signed": true,
-    "path": "/token"
+    "path": "/token",
+    "SameSite": "None",
+    "domain": "https://dshboard.herokuapp.com"
   },
   "CookieConfig": {
     "httpOnly": true,
     "secure": true,
-    "signed": true
+    "signed": true,
+    "SameSite": "None",
+    "domain": "https://dshboard.herokuapp.com"
   },
   "sessionConfig": {
     "resave": false,
