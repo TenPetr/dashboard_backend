@@ -7,13 +7,13 @@
     "secure": false,
     "signed": true,
     "path": "/token",
-    "domain": "herokuapp.com"
+    "domain": ".herokuapp.com"
   },
   "CookieConfig": {
     "httpOnly": true,
     "secure": false,
     "signed": true,
-    "domain": "herokuapp.com"
+    "domain": ".herokuapp.com"
   },
   "origin": "http://localhost:8100",
   "sessionConfig": {
