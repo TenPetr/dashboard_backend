@@ -3,16 +3,7 @@
     "httpOnly": true,
     "secure": true,
     "signed": true,
-    "path": "/token",
-    "domain": ".herokuapp.com",
-    "SameSite": "None"
-  },
-  "CookieConfig": {
-    "httpOnly": true,
-    "secure": true,
-    "signed": true,
-    "domain": ".herokuapp.com",
-    "SameSite": "None"
+    "path": "/token"
   },
   "sessionConfig": {
     "resave": false,

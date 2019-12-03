@@ -5,17 +5,17 @@ const config = require("config");
 const { User } = require("../models/user");
 
 router.get("/", async (req, res) => {
-  let user = await User.findOne({ username: req.query.username });
+  let user = await User.findOne({ username: req.session.username });
   if (!user) return res.status(400).send("Error, cannot find username.");
 
-  if (req.signedCookies.rft === user.refreshToken) {
+  if (req.signedCookies.refreshToken === user.refreshToken) {
     const refreshToken = user.generateRefreshToken();
 
     user.refreshToken = refreshToken;
     await user.save();
 
-    res.cookie("jwt", user.generateToken(), config.get("CookieConfig"));
-    res.cookie("rft", refreshToken, config.get("CookieCongifRft"));
+    req.session.jwt = user.generateToken();
+    res.cookie("refreshToken", refreshToken, config.get("CookieCongifRft"));
 
     res.status(200).send(true);
   } else {

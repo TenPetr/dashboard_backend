@@ -21,7 +21,7 @@ userSchema.methods.generateToken = function() {
   return jwt.sign(
     { _id: this._id, username: this.username, rn: randToken.uid(8) },
     config.get("jwtPrivateKey"),
-    { expiresIn: 20 }
+    { expiresIn: 30 }
   );
 };
 

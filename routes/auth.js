@@ -21,28 +21,31 @@ router.post("/", async (req, res) => {
   user.refreshToken = refreshToken;
   await user.save();
 
-  res.cookie("jwt", user.generateToken(), config.get("CookieConfig"));
-  res.cookie("rft", refreshToken, config.get("CookieCongifRft"));
+  req.session.jwt = user.generateToken();
+  req.session.username = user.username;
 
+  res.cookie("refreshToken", refreshToken, config.get("CookieCongifRft"));
   res.send({ username: user.username });
 });
 
 router.post("/logout", async (req, res) => {
+  req.session.destroy();
+
   let user = await User.findOne({ username: req.body.username });
   if (!user) return res.status(400).send("Error");
 
   user.refreshToken = "";
   await user.save();
 
-  res.clearCookie("rft");
-  res.clearCookie("jwt");
+  res.clearCookie("refreshToken");
+  res.clearCookie("connect.sid");
 
   res.send("Logged out.");
 });
 
 router.get("/islogged", async (req, res) => {
-  return res.json(true);
-  // UPRAVIT
+  if (req.session.jwt) return res.json(true);
+  return res.json(false);
 });
 
 module.exports = router;
