@@ -6,14 +6,12 @@
     "httpOnly": true,
     "secure": false,
     "signed": true,
-    "path": "/token",
-    "domain": ".herokuapp.com"
+    "path": "/token"
   },
   "CookieConfig": {
     "httpOnly": true,
     "secure": false,
-    "signed": true,
-    "domain": ".herokuapp.com"
+    "signed": true
   },
   "origin": "http://localhost:8100",
   "sessionConfig": {
